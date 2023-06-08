@@ -10,7 +10,7 @@ SQL_CONNECTION = SQL_ENGINE.connect()
 
 
 # выполнение SQL запроса без отдачи
-async def exec_without_resp(query: str, printing: bool = False) -> bool:
+def exec_without_resp(query: str, printing: bool = False) -> bool:
     alright = False
 
     # выполняем SQL запрос
@@ -32,7 +32,7 @@ async def exec_without_resp(query: str, printing: bool = False) -> bool:
 
 
 # выполнение SQL запроса с отдачей
-async def exec_with_resp(query: str, printing: bool = False) -> (bool, list):
+def exec_with_resp(query: str, printing: bool = False) -> (bool, list):
     alright = False
     result = []
 
@@ -55,8 +55,18 @@ async def exec_with_resp(query: str, printing: bool = False) -> (bool, list):
     return alright, result
 
 
+# перед работой приложения готовим БД для работы с ним
+def prepare_tables():
+    # создание таблицы с хранением telegram id пользователя и его API токеном от Dropbox
+    create_query = '''CREATE TABLE IF NOT EXISTS bot_user (
+id SERIAL NOT NULL PRIMARY KEY,
+tg_id INT NOT NULL,
+api_token VARCHAR(138) NULL);'''
+    exec_without_resp(query=create_query, printing=True)
+
+
 def main() -> None:
-    pass
+    prepare_tables()
 
 
 if __name__ == '__main__':
