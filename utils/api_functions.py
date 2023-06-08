@@ -1,14 +1,9 @@
-import dropbox
-from dropbox.files import SearchV2Result, CreateFolderResult, FileMetadata, DeleteResult, RelocationResult
-
-from config import API_TOKEN
-
-# авторизация приложения
-dropbox_client = dropbox.Dropbox(API_TOKEN)
+from dropbox import Dropbox
+from dropbox.files import CreateFolderResult, DeleteResult, RelocationResult, FileMetadata, FolderMetadata
 
 
 # загрузка файла на dropbox
-def upload_file(local_file_path: str, dropbox_file_path: str) -> FileMetadata | bool:
+def upload_file(dropbox_client: Dropbox, local_file_path: str, dropbox_file_path: str) -> FileMetadata | bool:
     try:
         with open(local_file_path, 'rb') as local_file:
             return dropbox_client.files_upload(f=local_file.read(), path=f'{dropbox_file_path}')
@@ -18,7 +13,7 @@ def upload_file(local_file_path: str, dropbox_file_path: str) -> FileMetadata | 
 
 
 # удаление файла из dropbox
-def delete_file(dropbox_file_path: str) -> DeleteResult | bool:
+def delete_file(dropbox_client: Dropbox, dropbox_file_path: str) -> DeleteResult | bool:
     try:
         return dropbox_client.files_delete_v2(path=dropbox_file_path)
     except Exception as error:
@@ -27,7 +22,7 @@ def delete_file(dropbox_file_path: str) -> DeleteResult | bool:
 
 
 # переименование файла на dropbox
-def rename_file(old_file_path: str, new_file_path: str) -> RelocationResult | bool:
+def rename_file(dropbox_client: Dropbox, old_file_path: str, new_file_path: str) -> RelocationResult | bool:
     try:
         return dropbox_client.files_move_v2(from_path=old_file_path, to_path=new_file_path)
     except Exception as error:
@@ -36,7 +31,7 @@ def rename_file(old_file_path: str, new_file_path: str) -> RelocationResult | bo
 
 
 # перемещение файла на dropbox
-def transport_file(old_path_to_file: str, new_path_to_file: str) -> RelocationResult | bool:
+def transport_file(dropbox_client: Dropbox, old_path_to_file: str, new_path_to_file: str) -> RelocationResult | bool:
     try:
         return dropbox_client.files_move_v2(from_path=old_path_to_file, to_path=new_path_to_file)
     except Exception as error:
@@ -45,7 +40,7 @@ def transport_file(old_path_to_file: str, new_path_to_file: str) -> RelocationRe
 
 
 # создание папки на dropbox
-def create_dir(dropbox_dir_path: str, new_dir_name: str) -> CreateFolderResult | bool:
+def create_dir(dropbox_client: Dropbox, dropbox_dir_path: str, new_dir_name: str) -> CreateFolderResult | bool:
     try:
         return dropbox_client.files_create_folder_v2(path=f'{dropbox_dir_path}/{new_dir_name}')
     except Exception as error:
@@ -54,31 +49,35 @@ def create_dir(dropbox_dir_path: str, new_dir_name: str) -> CreateFolderResult |
 
 
 # поиск файла на dropbox по названию по всему хранилищу
-def full_search_by_name(dropbox_file_path: str) -> SearchV2Result | bool:
+def full_search_by_name(dropbox_client: Dropbox, dropbox_file_name: str) -> list:
+    return_list = []
+
     try:
-        return dropbox_client.files_search_v2(query=f'/{dropbox_file_path}')
+        all_matches = dropbox_client.files_search_v2(query=f'/{dropbox_file_name}')
+        for match in all_matches.matches:
+            file_metadata = match.metadata._value
+            return_list.append(file_metadata.path_display)
     except Exception as error:
-        print(f'''You've got error by searching the file "{dropbox_file_path}" in full dropbox: {error}''')
-        return False
+        print(f'''You've got error by searching the file "{dropbox_file_name}" in full dropbox: {error}''')
+
+    return return_list
 
 
-# поиск файла на dropbox по названию в определённой директории
-def current_search_by_name(dropbox_file_path: str, dropbox_dir_path: str) -> SearchV2Result | bool:
+# вывод содержимого текущей директории на dropbox
+def get_files_list(dropbox_client: Dropbox, dropbox_dir_path: str) -> list:
+    dir_content = []
+
     try:
-        return dropbox_client.files_search_v2(query=f'{dropbox_dir_path}/{dropbox_file_path}')
-    except Exception as error:
-        print(f'''You've got error by searching the file "{dropbox_file_path}" in dir "{dropbox_dir_path}": {error}''')
-        return False
-
-
-# вывод списка файлов текущей директории на dropbox
-def get_files_list(dropbox_dir_path: str) -> SearchV2Result | bool:
-    try:
-        pass
-        return True
+        all_entities = dropbox_client.files_list_folder(path=dropbox_dir_path)
+        for entity in all_entities.entries:
+            entity_type = 'file'
+            if isinstance(entity, FolderMetadata):
+                entity_type = 'folder'
+            dir_content.append((entity_type, entity.name))
     except Exception as error:
         print(f'''You've got error by getting all content from "{dropbox_dir_path}": {error}''')
-        return False
+
+    return dir_content
 
 
 def main() -> None:
@@ -98,34 +97,15 @@ def main() -> None:
     # print(create_dir(dropbox_dir_path='/sample', new_dir_name='new_dir2'), '\n\n')
 
     # поиск файла на dropbox по названию по всему хранилищу
-    a = full_search_by_name(dropbox_file_path='new_python_file.py')
+    # all_matches = full_search_by_name(dropbox_file_name='new_python_file.py')
+
+    # вывод списка файлов текущей директории на dropbox
+    # all_matches = get_files_list(dropbox_dir_path='/sample')
+
+    # for match in all_matches:
+    #     print(match)
+    pass
 
 
 if __name__ == '__main__':
     main()
-    a = full_search_by_name(dropbox_file_path='new_python_file.py')
-
-
-"""
-for elem in a.matches:
-...     meta = elem.metadata
-...     print(type(meta))
-...     print(meta.path_display, '\n\n')
-
-
-for elem in a.matches:
-...     print(elem, '\n\n')
-... 
-SearchMatchV2(
-highlight_spans=NOT_SET, 
-match_type=SearchMatchTypeV2('filename', None), 
-
-metadata=MetadataV2('metadata', FileMetadata(client_modified=datetime.datetime(2023, 6, 7, 19, 24, 23), 
-content_hash='e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 
-export_info=NOT_SET, file_lock_info=NOT_SET, has_explicit_shared_members=NOT_SET, 
-id='id:xAspLRS2F3MAAAAAAAAADQ', is_downloadable=True, media_info=NOT_SET, name='new_python_file.py', 
-parent_shared_folder_id=NOT_SET, path_display='/sample/new_dir/new_python_file.py', 
-path_lower='/sample/new_dir/new_python_file.py', preview_url=NOT_SET, property_groups=NOT_SET, 
-rev='5fd8f30260e4efe010ba1', server_modified=datetime.datetime(2023, 6, 7, 19, 31, 53), 
-sharing_info=NOT_SET, size=91, symlink_info=NOT_SET))) 
-"""
