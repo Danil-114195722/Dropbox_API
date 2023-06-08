@@ -1,0 +1,8 @@
+Index: config.py
+===================================================================
+diff --git a/config.py b/config.py
+deleted file mode 100644
+--- a/config.py	(revision cdf290666a6e9b9123ec4bcc8ee42f1aadd07b7a)
++++ /dev/null	(revision cdf290666a6e9b9123ec4bcc8ee42f1aadd07b7a)
+@@ -1,1 +0,0 @@
+-API_TOKEN = 'sl.Bf4QW--GwIqy0IUQqYzhSVG5DxNhR0C25XMZ8ihuScIsupQnRakozG3BtkZDaCy-djAyymXm-xt5ZS-r0OUMCM9fsm3_ZuMp9YZlcawpX8TWsHlThSqYc35xfnMHk1Qmgwoxc20'

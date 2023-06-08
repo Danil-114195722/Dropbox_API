@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73fa846e-7a2d-4a7a-89f0-dfbfc1485f4e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/api_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="73fa846e-7a2d-4a7a-89f0-dfbfc1485f4e" name="Changes" comment="Finish making file with API working">
+      <change afterPath="$PROJECT_DIR$/bot_body.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +42,12 @@
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/utils" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="api_functions" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Dropbox_API" />
@@ -78,6 +80,14 @@
       <option name="presentableId" value="Default" />
       <updated>1686155580831</updated>
     </task>
+    <task id="LOCAL-00001" summary="Finish making file with API working">
+      <created>1686227900112</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686227900112</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -90,5 +100,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Finish making file with API working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish making file with API working" />
   </component>
 </project>

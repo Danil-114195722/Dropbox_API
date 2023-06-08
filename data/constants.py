@@ -1,7 +1,10 @@
-from dropbox import Dropbox
-
-from data.config import API_TOKEN
-
-
-# авторизация приложения
-dropbox_client = Dropbox(API_TOKEN)
+# имя пользователя
+DB_USER_NAME = 'root'
+# пароль пользователя
+DB_USER_PASS = 'your_password'
+# адрес БД
+HOST = 'localhost'
+# порт БД
+PORT = '5432'
+# название БД
+DATABASE = 'dropbox_tgbot'
