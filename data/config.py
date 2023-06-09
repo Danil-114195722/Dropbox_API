@@ -1,1 +1,4 @@
-API_TOKEN = 'your_api_token'
+# API токен бота
+BOT_TOKEN = 'your_bot_token'
+# пароль пользователя БД
+DB_USER_PASS = 'your_db_password'

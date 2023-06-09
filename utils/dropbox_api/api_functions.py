@@ -70,9 +70,9 @@ def get_files_list(dropbox_client: Dropbox, dropbox_dir_path: str) -> list:
     try:
         all_entities = dropbox_client.files_list_folder(path=dropbox_dir_path)
         for entity in all_entities.entries:
-            entity_type = 'file'
+            entity_type = 'файл'
             if isinstance(entity, FolderMetadata):
-                entity_type = 'folder'
+                entity_type = 'папка'
             dir_content.append((entity_type, entity.name))
     except Exception as error:
         print(f'''You've got error by getting all content from "{dropbox_dir_path}": {error}''')
@@ -82,22 +82,22 @@ def get_files_list(dropbox_client: Dropbox, dropbox_dir_path: str) -> list:
 
 def main() -> None:
     # загрузка файла на dropbox
-    # print(upload_file(local_file_path='./local_files/new_python_file.py', dropbox_file_path='/sample/new_python_file.py'), '\n\n')
+    # print(upload_file(local_file_path='./local_files/test_python_file.py', dropbox_file_path='/sample/test_python_file.py'), '\n\n')
 
     # удаление файла из dropbox
-    # print(delete_file(dropbox_file_path='/sample/new_python_file.py'), '\n\n')
+    # print(delete_file(dropbox_file_path='/sample/test_python_file.py'), '\n\n')
 
     # переименование файла на dropbox
     # print(rename_file(old_file_path='/sample/ggg2.txt', new_file_path='/sample/ggg2_renamed.txt'), '\n\n')
 
     # перемещение файла на dropbox
-    # print(transport_file(old_path_to_file='/new_python_file.py', new_path_to_file='/sample/new_dir/new_python_file.py'), '\n\n')
+    # print(transport_file(old_path_to_file='/test_python_file.py', new_path_to_file='/sample/new_dir/test_python_file.py'), '\n\n')
 
     # создание папки на dropbox
     # print(create_dir(dropbox_dir_path='/sample', new_dir_name='new_dir2'), '\n\n')
 
     # поиск файла на dropbox по названию по всему хранилищу
-    # all_matches = full_search_by_name(dropbox_file_name='new_python_file.py')
+    # all_matches = full_search_by_name(dropbox_file_name='test_python_file.py')
 
     # вывод списка файлов текущей директории на dropbox
     # all_matches = get_files_list(dropbox_dir_path='/sample')
