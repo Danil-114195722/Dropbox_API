@@ -4,7 +4,6 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 
-from data.config import API_TOKEN
 from data.constants import BOT
 from database.db_connect import prepare_tables
 from utils.handlers import base_handlers, upload_file_handler, drop_file_handler, rename_file_handler, \

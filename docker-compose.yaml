@@ -1,0 +1,36 @@
+version: "3.8"
+
+
+services:
+  postgres:
+    image: postgresql
+    container_name: dropbox_db
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=your_passwd
+    ports:
+      - "5432:5432"
+    networks:
+      default:
+        ipv4_address: 172.17.1.5
+
+  tg_bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: learnwords_bot
+    restart: always
+    command: sh -c "python3 /home/Dropbox_API/bot_body.py"
+    depends_on:
+      - postgres
+    networks:
+      default:
+        ipv4_address: 172.17.1.4
+
+
+networks:
+    default:
+      driver: bridge
+      ipam:
+        config:
+          - subnet: 172.16.1.0/24

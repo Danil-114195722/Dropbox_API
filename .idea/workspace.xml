@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73fa846e-7a2d-4a7a-89f0-dfbfc1485f4e" name="Changes" comment="Add func which make table with all bot users by starting bot">
-      <change afterPath="$PROJECT_DIR$/utils/handlers/base_handlers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/handlers/drop_file_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/handlers/get_dir_content_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/handlers/make_dir_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/handlers/rename_file_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/handlers/search_file_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/handlers/transport_file_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/handlers/upload_file_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/keyboards/keyboard.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/state_machines/main_state.py" afterDir="false" />
+    <list default="true" id="73fa846e-7a2d-4a7a-89f0-dfbfc1485f4e" name="Changes" comment="Finished make bot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot_body.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot_body.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/db_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db_connect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/db_desc.md" beforeDir="false" afterPath="$PROJECT_DIR$/database/db_desc.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,12 +44,34 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/utils/exceptions" />
       <recent name="$PROJECT_DIR$/utils/api" />
       <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$/utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.db_connect">
+  <component name="RunManager" selected="Python.bot_body">
+    <configuration name="api_functions (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Dropbox_API" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils/dropbox_api" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/dropbox_api/api_functions.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="api_functions" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Dropbox_API" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -149,8 +158,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.db_connect" />
         <item itemvalue="Python.bot_body" />
+        <item itemvalue="Python.api_functions (1)" />
+        <item itemvalue="Python.db_connect" />
         <item itemvalue="Python.base_handlers" />
       </list>
     </recent_temporary>
@@ -192,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686232750786</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished make bot">
+      <created>1686344229007</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686344229007</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,6 +228,7 @@
     <MESSAGE value="Made SQLAlchemy connection" />
     <MESSAGE value="Add two main funcs to exec DB query" />
     <MESSAGE value="Add func which make table with all bot users by starting bot" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add func which make table with all bot users by starting bot" />
+    <MESSAGE value="Finished make bot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished make bot" />
   </component>
 </project>
