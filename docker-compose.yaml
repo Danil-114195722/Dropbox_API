@@ -3,29 +3,31 @@ version: "3.8"
 
 services:
   postgres:
-    image: postgresql
+    image: postgres
     container_name: dropbox_db
     restart: always
     environment:
-      - POSTGRES_PASSWORD=your_passwd
+      POSTGRES_DB: "dropbox_tgbot"
+      POSTGRES_USER: "dropbox_user"
+      POSTGRES_PASSWORD: "your_passwd"
     ports:
-      - "5432:5432"
+      - "5443:5432"
     networks:
       default:
-        ipv4_address: 172.17.1.5
+        ipv4_address: 172.28.1.5
 
   tg_bot:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: learnwords_bot
+    container_name: dropbox_bot
     restart: always
     command: sh -c "python3 /home/Dropbox_API/bot_body.py"
     depends_on:
       - postgres
     networks:
       default:
-        ipv4_address: 172.17.1.4
+        ipv4_address: 172.28.1.4
 
 
 networks:
@@ -33,4 +35,4 @@ networks:
       driver: bridge
       ipam:
         config:
-          - subnet: 172.16.1.0/24
+          - subnet: 172.28.1.0/24

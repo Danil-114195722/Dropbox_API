@@ -103,7 +103,28 @@ async def add_reg_user(message: Message, state: FSMContext) -> None:
 
 
 async def refresh_api_token(callback: CallbackQuery, state: FSMContext) -> None:
-    await callback.message.answer('Введи мне свой новый API токен от Dropbox. Затем я обновлю твой существующий токен на новый, и ты так же сможешь пользоваться всеми возможностями бота')
+    await callback.message.answer(
+        text='''Введи мне свой новый API токен от Dropbox. Затем я обновлю твой существующий токен на новый, и ты так же сможешь пользоваться всеми возможностями бота.
+Вот инструкция по созданию API токена и выдаче прав на просмотр и редактирование файлов Dropbox:
+
+---Создание API ключа---
+
+1) Перейдите на страницу <a href="https://www.dropbox.com/developers/apps?_tk=pilot_lp&_ad=topbar4&_camp=myapps"><i><b>My apps</b></i></a>
+2) Выберите <i><b>"Scoped access"</b></i>
+3) Выберите <i><b>"Full Dropbox–Access to all files and folders in a user's Dropbox"</b></i>
+4) Назовите ваше приложение
+5) Поставьте галочку на соглашение с правами
+6) Нажмите на кнопку <i><b>"Create app"</b></i>
+
+---Установка разрешений на работу с файлами посредством API---
+
+1) Зайдите в <a href="https://www.dropbox.com/developers/apps"><i><b>консоль разработчика Dropbox</b></i></a>
+2) Найдите свое приложение в списке и нажмите на его название
+3) Перейдите на вкладку <i><b>"Permissions"</b></i> и найдите раздел <i><b>"Scopes"</b></i>
+4) В списке разрешений найдите <i><b>"files.content.write"</b></i>, <i><b>"files.content.read"</b></i> и <i><b>"files.metadata.write"</b></i> и установите галочки напротив этих разрешений
+5) Нажмите на кнопку <i><b>"Submit"</b></i> для сохранения изменений''',
+        parse_mode='HTML'
+    )
     await RefreshTokenState.token.set()
 
 
