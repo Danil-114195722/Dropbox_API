@@ -61,7 +61,7 @@ def prepare_tables():
     # создание таблицы с хранением telegram id пользователя и его API токеном от Dropbox
     create_query = '''CREATE TABLE IF NOT EXISTS bot_user (
 id SERIAL NOT NULL PRIMARY KEY,
-tg_id INT NOT NULL,
+tg_id BIGINT NOT NULL,
 api_token VARCHAR(138) NOT NULL);'''
     exec_without_resp(query=create_query, printing=False)
 
