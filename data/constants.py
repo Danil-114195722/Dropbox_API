@@ -6,7 +6,7 @@ from data.config import BOT_TOKEN
 # имя пользователя
 DB_USER_NAME = 'dropbox_user'
 # адрес БД
-HOST = '172.17.1.5'
+HOST = '172.28.1.5'
 # порт БД
 PORT = '5432'
 # название БД
